@@ -1,21 +1,31 @@
+// {
+//     "name": "GolBet Dev Container",
+//     "build": {
+//         "dockerfile": "Dockerfile"
+//     },
+//     "workspaceFolder": "/workspace",
+//     "mounts": [
+//         "source=${localWorkspaceFolder},target=/workspace,type=bind"
+//     ],
+//     // "remoteUser": "vscode",
+//     // "containerUser": "vscode",
+//     "customizations": {
+//         "vscode": {
+//             "extensions": [
+//                 "ms-dotnettools.csdevkit"
+//             ]
+//         }
+//     }
+// }
+
 {
-    "name": "GolBet Dev Container",
-
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-
-    "workspaceFolder": "/workspace",
-
-    "mounts": [
-        "source=${localWorkspaceFolder},target=/workspace,type=bind"
-    ],
-
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-dotnettools.csdevkit"
-            ]
-        }
+  "name": "GolBet Dev Container",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-dotnettools.csdevkit"]
     }
+  }
 }
