@@ -16,7 +16,7 @@ services:
       - "1433:1433"
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "Admin123!_GolBet"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
 
 volumes:
   sql_data:

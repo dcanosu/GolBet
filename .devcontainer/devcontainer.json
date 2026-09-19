@@ -1,22 +1,4 @@
-// {
-//     "name": "GolBet Dev Container",
-//     "build": {
-//         "dockerfile": "Dockerfile"
-//     },
-//     "workspaceFolder": "/workspace",
-//     "mounts": [
-//         "source=${localWorkspaceFolder},target=/workspace,type=bind"
-//     ],
-//     // "remoteUser": "vscode",
-//     // "containerUser": "vscode",
-//     "customizations": {
-//         "vscode": {
-//             "extensions": [
-//                 "ms-dotnettools.csdevkit"
-//             ]
-//         }
-//     }
-// }
+
 
 {
   "name": "GolBet Dev Container",
@@ -27,5 +9,8 @@
     "vscode": {
       "extensions": ["ms-dotnettools.csdevkit"]
     }
+  },
+  "containerEnv": {
+    "MSSQL_SA_PASSWORD": "${localEnv:MSSQL_SA_PASSWORD}"
   }
 }
