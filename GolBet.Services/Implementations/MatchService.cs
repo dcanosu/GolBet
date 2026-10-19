@@ -21,6 +21,11 @@ public class MatchService : IMatchService
         var matches = await _matchRepository.GetAllWithTeamsAsync(status);
         return _mapper.Map<IEnumerable<MatchDto>>(matches);
     }
+    public async Task<IEnumerable<MatchDto>> GetAllMatchesAsync(MatchStatus? status = null, string? search = null)
+    {
+        var matches = await _matchRepository.GetAllWithTeamsAsync(status, search);
+        return _mapper.Map<IEnumerable<MatchDto>>(matches);
+    }
 
     public async Task<MatchDetailDto?> GetDetailAsync(int id)
     {
@@ -73,5 +78,4 @@ public class MatchService : IMatchService
             throw new InvalidOperationException(
                 "La fecha del partido debe ser futura.");
     }
-
 }
