@@ -60,3 +60,7 @@ code .
 - Environment variables missing: Ensure ```.env``` is located at the root of the repository alongside ```docker-compose.yml```.
 
 - Rebuilding the environment: Run Dev Containers: Rebuild Container from the VS Code Command Palette after updating configuration files.
+
+![alt text](image.png)
+
+![alt text](image-1.png)
