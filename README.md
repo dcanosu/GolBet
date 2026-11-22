@@ -61,6 +61,14 @@ code .
 
 - Rebuilding the environment: Run Dev Containers: Rebuild Container from the VS Code Command Palette after updating configuration files.
 
+# Bettor view
+
 ![alt text](image.png)
 
 ![alt text](image-1.png)
+
+# Admin View
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
