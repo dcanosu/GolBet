@@ -2,6 +2,7 @@
 using AutoMapper;
 using GolBet.Entities;
 using GolBet.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace GolBet.Services;
 
@@ -10,12 +11,14 @@ public class MatchService : IMatchService
     private readonly IMatchRepository _matchRepository;
     private readonly IBetRepository _betRepository;
     private readonly IMapper _mapper;
+    private readonly ILogger<MatchService> _logger;
 
-    public MatchService(IMatchRepository matchRepository, IBetRepository betRepository, IMapper mapper)
+    public MatchService(IMatchRepository matchRepository, IBetRepository betRepository, IMapper mapper, ILogger<MatchService> logger)
     {
         _matchRepository = matchRepository;
         _betRepository = betRepository;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<IEnumerable<MatchDto>> GetBoardAsync(MatchStatus? status = null)
@@ -139,6 +142,12 @@ public class MatchService : IMatchService
         // 4. ONE save: the match, every bet and every balance — ONE transaction
         await _matchRepository.UpdateAsync(match);
 
+        _logger.LogInformation(
+            "Match {MatchId} closed {HomeGoals}-{AwayGoals}: " +
+            "{ResolvedBets} bets resolved, {WonBets} won, {TotalPaid} paid",
+            match.Id, dto.HomeGoals, dto.AwayGoals,
+            summary.ResolvedBets, summary.WonBets, summary.TotalPaid);
+            
         return summary;
     }
 
